@@ -1,0 +1,65 @@
+//theme colors
+$primary-color: #326dee !default;
+$secondary-color: #1ac888 !default;
+$error: #d32752 !default;
+$info: #f6c31c !default;
+
+// color palette / maps of colors
+/* Video:
+    how to use map ==> video link: https://www.youtube.com/watch?v=La8wN7o-cL8
+    how to use map ==> example: 
+                        map-get($colors, 'primary');
+                        map-has-key($colors, 'primary');
+                        etc. Document link: https://sass-lang.com/documentation/modules/map
+                        
+   Loop colors ==> document link: https://sass-lang.com/documentation/at-rules/control/each
+   Loop colors ==> video link: https://www.youtube.com/watch?v=I1lp8eSKmEs
+
+   Check also the following:
+                    1.Conditionals (@if) ==> video link: https://www.youtube.com/watch?v=QPZOvED3N_8&list=PL4cUxeGkcC9jxJX7vojNVK-o8ubDZEcNb&index=10
+   ========================================================================== */
+$colors: (
+  "primary": $primary-color,
+  "secondary": $secondary-color,
+  "error": $error,
+  "info": $info,
+  "blue": #1919e6,
+  "red": #e61919,
+  "yellow": #e6e619,
+  "green": #19e635,
+  "orange": #ffa600,
+  "purple": #9900ff,
+  "gray": #808080,
+  "black": black,
+  "white": white,
+);
+
+// Generate text-color and bg-color for each $colors
+@each $key, $value in $colors {
+  // debugging purposes only, uncomment to see the result in terminal
+  // @debug "key: #{$key} == value: #{$value}";
+
+  .text-#{$key} {
+    color: $value;
+  }
+  .bg-#{$key} {
+    background-color: $value;
+  }
+
+  // light variations of $colors
+  @for $i from 1 through 9 {
+    .text-#{$key}-light-#{$i} {
+      color: mix(white, $value, $i * 10);
+    }
+  }
+
+    // dark variations
+    @for $i from 1 through 9 {
+      .text-#{$key}-dark-#{$i} {
+        color: mix(black, $value, $i * 10);
+      }
+      .bg-#{$key}-dark-#{$i} {
+        background-color: mix(black, $value, $i * 10);
+      }
+    }
+}

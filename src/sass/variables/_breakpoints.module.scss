@@ -1,0 +1,76 @@
+// Breakpoints
+$breakpoints: (
+  //breakpoints base in tailwind container class breakpoint.
+  // link: https://tailwindcss.com/docs/container
+  // you can change the breakpoints as you wish, is up to you depend on your needs.
+  xs: 0,
+  sm: 640px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px
+  // xxl: 1536px in @mixin breakpoint
+);
+
+@mixin xs {
+  @media (min-width: map-get($breakpoints, "xs")) {
+    @content;
+  }
+}
+
+@mixin sm {
+  @media (min-width: map-get($breakpoints, "sm")) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (min-width: map-get($breakpoints, "md")) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (min-width: map-get($breakpoints, "lg")) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media (min-width: map-get($breakpoints, "xl")) {
+    @content;
+  }
+}
+
+// custom breakpoints mixin
+// ($bp: 0) is default value when you not pass a value to the mixin.
+@mixin breakpoint($bp: 0) {
+  @media (min-width: $bp) {
+    @content;
+  }
+}
+
+/**
+ * You can check the breapoints if working by uncommenting 
+ * the following code below and use it to the /views/index.html or any other file if you like.
+ */
+
+// .responsive-test {
+//   @include xs {
+//     color: red;
+//   }
+//   @include sm {
+//     color: blue;
+//   }
+//   @include md {
+//     color: green;
+//   }
+//   @include lg {
+//     color: purple;
+//   }
+//   @include xl {
+//     color: orange;
+//   }
+//   @include breakpoint(1536px) {
+//     color: pink;
+//   }
+// }
